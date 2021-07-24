@@ -30,8 +30,10 @@ public class HomeController {
         // page.current默认是1, page.limit默认为10。这两个参数都可以在请求url中设置
         model.addAttribute("page", page);
 
+        // 从数据库中取出当前页面显示范围里的数据
         List<DiscussPost> posts = discussPostService.findDiscussPosts(0, page.getOffset(), page.getLimit());
 
+        // 将帖子和用户信息一起打包进一个map列表，返回给前端
         List<Map<String, Object>> postAndUser = new ArrayList<>();
         if (posts != null) {
             for (DiscussPost post : posts) {
