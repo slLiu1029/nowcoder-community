@@ -13,6 +13,6 @@ public class DiscussPost {
     private int type;   // 0表示普通，1表示置顶
     private int status; // 帖子的状态. 0：正常  1：精华  2：拉黑
     private Date createTime;
-    private int commentCount;
+    private int commentCount;   // 该帖子有多少条评论
     private double score;
 }

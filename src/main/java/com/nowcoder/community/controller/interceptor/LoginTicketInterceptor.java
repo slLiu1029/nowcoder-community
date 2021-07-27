@@ -2,6 +2,7 @@ package com.nowcoder.community.controller.interceptor;
 
 import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
+import com.nowcoder.community.service.MessageService;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.util.CookieUtil;
 import com.nowcoder.community.util.HostHolder;
@@ -24,6 +25,9 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
 
     @Autowired
     private HostHolder hostHolder;
+
+    @Autowired
+    private MessageService messageService;
 
     /**
      * 前置处理器，在Controller调用之前调用。拦截指定路径的请求，并从cookie中取出登录凭证ticket，并验证凭证是否通过.如果通过，则根据ticket
@@ -71,6 +75,8 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
         User user = hostHolder.getUser();
         if (user != null && modelAndView != null) {
             modelAndView.addObject("loginUser", user);
+            int letterUnreadCount = messageService.findLetterUnreadCount(user.getId(), null);
+            modelAndView.addObject("letterUnreadCount", letterUnreadCount);
         }
     }
 

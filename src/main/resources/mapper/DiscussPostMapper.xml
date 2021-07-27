@@ -3,6 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nowcoder.community.dao.DiscussPostMapper">
+    <insert id="insertDiscussPost">
+        insert into nowcoder.discuss_post (user_id, title, content, type, status, create_time, comment_count, score)
+        values (#{userId}, #{title}, #{content}, #{type}, #{status}, #{createTime}, #{commentCount}, #{score});
+    </insert>
+
+    <update id="updateCommentCount">
+        update nowcoder.discuss_post
+        set comment_count = #{commentCount}
+        where id = #{id};
+    </update>
 
     <!--如果userId != 0，则根据userId查询帖子-->
     <select id="selectDiscussPosts" resultType="com.nowcoder.community.entity.DiscussPost">
@@ -22,5 +32,11 @@
         <if test="userId != 0">
             and user_id = #{userId}
         </if>
+    </select>
+
+    <select id="selectDiscussPostById" resultType="com.nowcoder.community.entity.DiscussPost">
+        select *
+        from nowcoder.discuss_post
+        where id = #{id};
     </select>
 </mapper>
