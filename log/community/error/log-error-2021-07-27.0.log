@@ -1,0 +1,338 @@
+2021-07-27 14:43:03,450 ERROR [http-nio-8080-exec-3] o.a.c.c.C.[.[.[.[dispatcherServlet] [DirectJDKLog.java:175] Servlet.service() for servlet [dispatcherServlet] in context with path [/community] threw exception [Request processing failed; nested exception is org.springframework.jdbc.UncategorizedSQLException: 
+### Error updating database.  Cause: java.sql.SQLException: Incorrect string value: '\xF0\x9F\x98\x85' for column 'content' at row 1
+### The error may exist in file [D:\MyFiles\Java\nowcoder\nccommunity\target\classes\mapper\MessageMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into nowcoder.message (from_id, to_id, conversation_id, content, status, create_time)         values (?, ?, ?, ?, ?, ?);
+### Cause: java.sql.SQLException: Incorrect string value: '\xF0\x9F\x98\x85' for column 'content' at row 1
+; uncategorized SQLException; SQL state [HY000]; error code [1366]; Incorrect string value: '\xF0\x9F\x98\x85' for column 'content' at row 1; nested exception is java.sql.SQLException: Incorrect string value: '\xF0\x9F\x98\x85' for column 'content' at row 1] with root cause
+java.sql.SQLException: Incorrect string value: '\xF0\x9F\x98\x85' for column 'content' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at sun.reflect.GeneratedMethodAccessor44.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy80.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:194)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy59.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:145)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at com.sun.proxy.$Proxy62.insertMessage(Unknown Source)
+	at com.nowcoder.community.service.MessageService.addMessage(MessageService.java:74)
+	at com.nowcoder.community.controller.MessageController.sendLetter(MessageController.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1063)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:228)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1723)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2021-07-27 14:43:10,825 ERROR [http-nio-8080-exec-7] o.a.c.c.C.[.[.[.[dispatcherServlet] [DirectJDKLog.java:175] Servlet.service() for servlet [dispatcherServlet] in context with path [/community] threw exception [Request processing failed; nested exception is org.springframework.jdbc.UncategorizedSQLException: 
+### Error updating database.  Cause: java.sql.SQLException: Incorrect string value: '\xF0\x9F\x98\x85' for column 'content' at row 1
+### The error may exist in file [D:\MyFiles\Java\nowcoder\nccommunity\target\classes\mapper\MessageMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: insert into nowcoder.message (from_id, to_id, conversation_id, content, status, create_time)         values (?, ?, ?, ?, ?, ?);
+### Cause: java.sql.SQLException: Incorrect string value: '\xF0\x9F\x98\x85' for column 'content' at row 1
+; uncategorized SQLException; SQL state [HY000]; error code [1366]; Incorrect string value: '\xF0\x9F\x98\x85' for column 'content' at row 1; nested exception is java.sql.SQLException: Incorrect string value: '\xF0\x9F\x98\x85' for column 'content' at row 1] with root cause
+java.sql.SQLException: Incorrect string value: '\xF0\x9F\x98\x85' for column 'content' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at sun.reflect.GeneratedMethodAccessor44.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy80.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:194)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy59.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:145)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at com.sun.proxy.$Proxy62.insertMessage(Unknown Source)
+	at com.nowcoder.community.service.MessageService.addMessage(MessageService.java:74)
+	at com.nowcoder.community.controller.MessageController.sendLetter(MessageController.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1063)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:228)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1723)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2021-07-27 15:41:53,758 ERROR [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter [LoggingFailureAnalysisReporter.java:40] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field messageService in com.nowcoder.community.controller.interceptor.LoginTicketInterceptor required a bean of type 'com.nowcoder.community.service.MessageService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.nowcoder.community.service.MessageService' in your configuration.
+
+2021-07-27 16:00:29,476 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:22] 服务器发生异常/ by zero
+2021-07-27 16:00:29,476 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] com.nowcoder.community.controller.MessageController.getLetterList(MessageController.java:34)
+2021-07-27 16:00:29,476 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2021-07-27 16:00:29,477 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2021-07-27 16:00:29,477 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2021-07-27 16:00:29,477 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] java.lang.reflect.Method.invoke(Method.java:498)
+2021-07-27 16:00:29,477 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
+2021-07-27 16:00:29,477 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
+2021-07-27 16:00:29,477 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+2021-07-27 16:00:29,478 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
+2021-07-27 16:00:29,478 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+2021-07-27 16:00:29,478 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+2021-07-27 16:00:29,478 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1063)
+2021-07-27 16:00:29,478 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+2021-07-27 16:00:29,478 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+2021-07-27 16:00:29,478 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+2021-07-27 16:00:29,478 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+2021-07-27 16:00:29,478 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+2021-07-27 16:00:29,479 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+2021-07-27 16:00:29,479 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:228)
+2021-07-27 16:00:29,479 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+2021-07-27 16:00:29,479 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+2021-07-27 16:00:29,479 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+2021-07-27 16:00:29,479 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+2021-07-27 16:00:29,479 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+2021-07-27 16:00:29,479 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+2021-07-27 16:00:29,479 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+2021-07-27 16:00:29,479 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+2021-07-27 16:00:29,480 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+2021-07-27 16:00:29,480 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+2021-07-27 16:00:29,480 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+2021-07-27 16:00:29,480 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+2021-07-27 16:00:29,480 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+2021-07-27 16:00:29,480 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+2021-07-27 16:00:29,480 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+2021-07-27 16:00:29,481 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+2021-07-27 16:00:29,481 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+2021-07-27 16:00:29,481 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+2021-07-27 16:00:29,481 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+2021-07-27 16:00:29,481 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+2021-07-27 16:00:29,481 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+2021-07-27 16:00:29,481 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+2021-07-27 16:00:29,481 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+2021-07-27 16:00:29,481 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+2021-07-27 16:00:29,481 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+2021-07-27 16:00:29,482 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+2021-07-27 16:00:29,482 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1723)
+2021-07-27 16:00:29,482 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+2021-07-27 16:00:29,482 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+2021-07-27 16:00:29,482 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+2021-07-27 16:00:29,482 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+2021-07-27 16:00:29,482 ERROR [http-nio-8080-exec-1] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] java.lang.Thread.run(Thread.java:748)
+2021-07-27 16:01:10,797 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:22] 服务器发生异常/ by zero
+2021-07-27 16:01:10,798 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] com.nowcoder.community.controller.MessageController.sendLetter(MessageController.java:108)
+2021-07-27 16:01:10,798 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2021-07-27 16:01:10,798 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2021-07-27 16:01:10,798 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2021-07-27 16:01:10,798 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] java.lang.reflect.Method.invoke(Method.java:498)
+2021-07-27 16:01:10,798 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
+2021-07-27 16:01:10,798 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
+2021-07-27 16:01:10,799 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+2021-07-27 16:01:10,799 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
+2021-07-27 16:01:10,799 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+2021-07-27 16:01:10,799 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+2021-07-27 16:01:10,799 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1063)
+2021-07-27 16:01:10,799 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+2021-07-27 16:01:10,799 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+2021-07-27 16:01:10,799 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+2021-07-27 16:01:10,800 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+2021-07-27 16:01:10,800 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+2021-07-27 16:01:10,800 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+2021-07-27 16:01:10,800 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:228)
+2021-07-27 16:01:10,800 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+2021-07-27 16:01:10,800 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+2021-07-27 16:01:10,801 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+2021-07-27 16:01:10,801 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+2021-07-27 16:01:10,801 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+2021-07-27 16:01:10,801 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+2021-07-27 16:01:10,801 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+2021-07-27 16:01:10,801 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+2021-07-27 16:01:10,802 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+2021-07-27 16:01:10,802 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+2021-07-27 16:01:10,802 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+2021-07-27 16:01:10,802 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+2021-07-27 16:01:10,803 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+2021-07-27 16:01:10,803 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+2021-07-27 16:01:10,803 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+2021-07-27 16:01:10,803 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+2021-07-27 16:01:10,803 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+2021-07-27 16:01:10,803 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+2021-07-27 16:01:10,803 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+2021-07-27 16:01:10,803 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+2021-07-27 16:01:10,804 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+2021-07-27 16:01:10,804 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+2021-07-27 16:01:10,804 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+2021-07-27 16:01:10,804 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+2021-07-27 16:01:10,804 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+2021-07-27 16:01:10,804 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+2021-07-27 16:01:10,804 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1723)
+2021-07-27 16:01:10,805 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+2021-07-27 16:01:10,805 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+2021-07-27 16:01:10,805 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+2021-07-27 16:01:10,805 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+2021-07-27 16:01:10,805 ERROR [http-nio-8080-exec-6] c.n.c.c.a.ExceptionAdvice [ExceptionAdvice.java:24] java.lang.Thread.run(Thread.java:748)
+2021-07-27 21:40:36,812 ERROR [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter [LoggingFailureAnalysisReporter.java:40] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field likeService in com.nowcoder.community.controller.LikeController required a bean of type 'com.nowcoder.community.service.LikeService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.nowcoder.community.service.LikeService' in your configuration.
+
+2021-07-27 21:41:24,351 ERROR [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter [LoggingFailureAnalysisReporter.java:40] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field likeService in com.nowcoder.community.controller.LikeController required a bean of type 'com.nowcoder.community.service.LikeService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.nowcoder.community.service.LikeService' in your configuration.
+

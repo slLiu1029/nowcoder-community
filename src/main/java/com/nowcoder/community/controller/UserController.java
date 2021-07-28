@@ -2,6 +2,7 @@ package com.nowcoder.community.controller;
 
 import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.entity.User;
+import com.nowcoder.community.service.LikeService;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
@@ -46,8 +47,12 @@ public class UserController {
     @Autowired
     private HostHolder hostHolder;
 
+    @Autowired
+    private LikeService likeService;
+
     /**
      * 请求设置页面
+     *
      * @return 设置页面
      */
     @LoginRequired
@@ -58,6 +63,7 @@ public class UserController {
 
     /**
      * 上传头像
+     *
      * @param headerImg 头像图片文件
      * @param model     model
      * @return 如果上传成功，重定向到首页；否则，返回到设置页面
@@ -103,6 +109,7 @@ public class UserController {
 
     /**
      * 浏览器上打印头像图片
+     *
      * @param filename 图片文件名
      * @param response 响应
      */
@@ -162,5 +169,27 @@ public class UserController {
 
         // 密码已更新，需要使用户退出登录
         return "redirect:/logout";
+    }
+
+    /**
+     * 访问用户的个人主页
+     * @param userId 用户id
+     * @param model model
+     * @return 个人主页
+     */
+    @GetMapping("/profile/{userId}")
+    public String getProfilePage(@PathVariable("userId") int userId, Model model) {
+        User user = userService.findUserById(userId);
+        if (user == null) {
+            throw new RuntimeException("当前用户不存在");
+        }
+
+        // 用户
+        model.addAttribute("user", user);
+        // 点赞数量
+        long likeCount = likeService.findUserLikeCount(userId);
+        model.addAttribute("likeCount", likeCount);
+
+        return "/site/profile";
     }
 }
